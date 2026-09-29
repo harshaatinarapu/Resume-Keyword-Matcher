@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply bg-paper text-ink font-body antialiased;
+  background-image:
+    linear-gradient(90deg, rgba(44, 76, 134, 0.045) 1px, transparent 1px),
+    linear-gradient(rgba(44, 76, 134, 0.045) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+h1, h2, h3, h4 {
+  @apply font-display;
+}
+
+/* Registration-mark corners: a recurring structural device that stands in for
+   the generic "rounded card + soft shadow" pattern. It nods to the print/
+   blueprint alignment marks this product's whole metaphor is built on -
+   lining two documents up against each other. */
+.mark-corners {
+  position: relative;
+}
+.mark-corners::before,
+.mark-corners::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+}
+.mark-corners::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid theme('colors.line');
+  border-left: 2px solid theme('colors.line');
+}
+.mark-corners::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid theme('colors.line');
+  border-right: 2px solid theme('colors.line');
+}
+
+::selection {
+  background: theme('colors.brass');
+  color: white;
+}
+
+:focus-visible {
+  outline: 2px solid theme('colors.brass');
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
